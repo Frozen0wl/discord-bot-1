@@ -26,6 +26,6 @@ class LeagueOfLegends(commands.Cog):
         if message == self.champ and self.waiting and self.player == message.author.id:
             self.point += 1
             await message.channel.send(f"good job! points: {self.point}")
-        elif self.waiting and self.player == message.author.id:
+        elif message != self.champ and self.waiting and self.player == message.author.id:
             self.waiting = False
             await message.channel.send(f"Game Over! The correct answer was {self.champ} | Total points: {self.point}")
