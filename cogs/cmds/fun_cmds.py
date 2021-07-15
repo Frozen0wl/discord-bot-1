@@ -10,11 +10,22 @@ import json
 
 import random
 
-from cogs.cmds.custom_checks import not_in_blacklist
+from cogs.cmds.custom_checks import is_moderator, not_in_blacklist
 
 class FunCmds(commands.Cog):
     def __init__(self, client):
         self.client = client
+
+    @commands.command()
+    async def right(self, ctx):
+        k = random(0, 1)
+        if is_moderator():
+            await ctx.send(f"Yes {ctx.author.name}, you are right!")
+        elif k == 0:
+            await ctx.send(f"No screw you!")
+        else:
+            await ctx.send(f"Absolutely")
+
 
     @commands.command()
     @commands.check(not_in_blacklist)
